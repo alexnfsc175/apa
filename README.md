@@ -25,3 +25,27 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## NPM
+
+<https://medium.com/better-programming/angular-7-series-part-2-create-custom-library-8d7a0494b2cc>
+
+executar
+
+```bash
+npm install --no-optional
+```
+
+então construa biblioteca
+
+```bash
+ng build ng7-common
+```
+
+finalmente, execute
+
+```bash
+npm install,
+```
+
+isso instalará a dependência opcional que foi ignorada em

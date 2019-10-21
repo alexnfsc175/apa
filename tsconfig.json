@@ -17,7 +17,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "apa-common": [
+        "dist/apa-common"
+      ],
+      "apa-common/*": [
+        "dist/apa-common/*"
+      ],
+      "apa-laravel-echo": [
+        "dist/apa-laravel-echo"
+      ],
+      "apa-laravel-echo/*": [
+        "dist/apa-laravel-echo/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

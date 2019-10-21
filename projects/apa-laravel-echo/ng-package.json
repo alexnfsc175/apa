@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/apa-laravel-echo",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "socket.io-client": "io.client",
+      "laravel-echo": "Echo"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "core-js",
+    "reflect-metadata",
+    "rxjs",
+    "socket.io-client",
+    "laravel-echo",
+    "zone.js"
+  ]
+}
