@@ -1,6 +1,15 @@
 {
   "name": "apa",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "keywords": [
+    "@apa/laravel-echo",
+    "socket.io"
+  ],
+  "homepage": "https://github.com/alexnfsc175/apa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexnfsc175/apa"
+  },
   "scripts": {
     "home:build": "ng build home --prod",
     "home:serve": "ng serve home -o --port 3000",
