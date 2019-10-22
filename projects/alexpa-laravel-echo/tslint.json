@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "apaCommon",
+      "apaLaravelEcho",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "apa-common",
+      "alexpa-laravel-echo",
       "kebab-case"
     ]
   }

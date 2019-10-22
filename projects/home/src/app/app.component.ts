@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EchoService } from '@apa/laravel-echo';
+import { EchoService } from '@alexpa/laravel-echo';
 import { Channel } from 'laravel-echo/dist/channel';
 
 @Component({

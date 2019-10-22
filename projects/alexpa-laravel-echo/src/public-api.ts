@@ -22,5 +22,6 @@ export {
 } from './lib/service/echo.service';
 
 export { EchoInterceptor } from './lib/service/interceptor.service';
-export { NgLaravelEchoModule } from './lib/ng-laravel-echo.module';
+export { EchoAuthService,  AUTH_SERVICE } from './lib/auth/auth.service';
+export { LaravelEchoModule } from './lib/laravel-echo.module';
 

@@ -3,11 +3,13 @@ import { Observable, of, ReplaySubject, Subject, throwError } from 'rxjs';
 import { distinctUntilChanged, map, shareReplay, startWith } from 'rxjs/operators';
 import Echo from 'laravel-echo';
 import * as io from 'socket.io-client';
+import { EchoAuthService, AUTH_SERVICE } from '../auth/auth.service';
 
 /**
  * The token used to inject the config in Angular's DI system
  */
 export const ECHO_CONFIG = new InjectionToken<EchoConfig>('echo.config');
+
 
 /**
  * Service configuration
@@ -311,12 +313,24 @@ export class EchoService {
    * @param config Service configuration
    */
   constructor(private ngZone: NgZone,
-              @Inject(ECHO_CONFIG) private config: EchoConfig) {
+              @Inject(ECHO_CONFIG) private config: EchoConfig,
+              @Inject(AUTH_SERVICE) private authService: EchoAuthService
+  ) {
     let options = Object.assign({}, config.options);
     if (options.broadcaster === 'socket.io') {
       options = Object.assign({
         client: io
       }, options);
+    }
+
+    if (authService.getToken()) {
+      const token = authService.getToken();
+      options.auth = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        ...options.auth
+      };
     }
 
     this._echo = new Echo(options);

@@ -24,7 +24,9 @@ export class EchoInterceptor implements HttpInterceptor {
   constructor(private echoService: EchoService) {
   }
 
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(this);
     const socketId = this.echoService.socketId;
     if (this.echoService.connected && socketId) {
       req = req.clone({ headers: req.headers.append('X-Socket-ID', socketId) });

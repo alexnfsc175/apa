@@ -11,26 +11,13 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "apa-common": [
-        "dist/apa-common"
-      ],
-      "apa-common/*": [
-        "dist/apa-common/*"
-      ],
-      "apa-laravel-echo": [
-        "dist/apa-laravel-echo"
-      ],
-      "apa-laravel-echo/*": [
-        "dist/apa-laravel-echo/*"
-      ]
+      "alexpa-common": ["dist/alexpa-common"],
+      "alexpa-common/*": ["dist/alexpa-common/*"],
+      "alexpa-laravel-echo": ["dist/alexpa-laravel-echo"],
+      "alexpa-laravel-echo/*": ["dist/alexpa-laravel-echo/*"]
     }
   },
   "angularCompilerOptions": {

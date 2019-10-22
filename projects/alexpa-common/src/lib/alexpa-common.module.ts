@@ -8,4 +8,4 @@ import { NgModule } from '@angular/core';
   ],
   exports: []
 })
-export class ApaCommonModule { }
+export class AlexpaCommonModule { }

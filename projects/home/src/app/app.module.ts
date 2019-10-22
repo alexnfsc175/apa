@@ -3,8 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgLaravelEchoModule, EchoConfig } from '@apa/laravel-echo';
+import { LaravelEchoModule, EchoConfig, EchoAuthService, AUTH_SERVICE } from '@alexpa/laravel-echo';
 
+class AuthService implements EchoAuthService {
+  getToken(): string | number {
+    return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImM4Y2QxMjUxZmM2NmFhYmFkNjBmOWQyYmNlOGRhMDRjZWVlOGVjYjU3ZDMyZmM3M2I4MzNhZDllMzYwZmY5YmMwNWIzODBhZjQ3ZjkxNTE2In0.eyJhdWQiOiI0IiwianRpIjoiYzhjZDEyNTFmYzY2YWFiYWQ2MGY5ZDJiY2U4ZGEwNGNlZWU4ZWNiNTdkMzJmYzczYjgzM2FkOWUzNjBmZjliYzA1YjM4MGFmNDdmOTE1MTYiLCJpYXQiOjE1NzE3NTcyMDQsIm5iZiI6MTU3MTc1NzIwNCwiZXhwIjoxNTcxNzYwODA0LCJzdWIiOiIxIiwic2NvcGVzIjpbIioiXX0.jGY3iHid9Nq8vD-Ur3ZvNajQxusUvN-Vsb9lS0-VtSv29yWyMs_mPWHbVXwe5alROV9iHKZhxiOno2KABhVPeGsFZXhagiSbTR2vmPhqO7rAJqUCB-qppfMDOditPiAUwYgyGdAHW50d0No5Fs3cRSIFV1g4AK079oMQ8j_zlI-bhoxn3-sH7DKF5mKfMs6i8wVTzxkS63TWAVg-XtDFiJwegOhQx7iBMA7178EgInkzhfqXz1FS2oPoEvZWj-lp1C3SJTyNkXjdMbamvIiInDF7jDkCbD79aglcI2bg2dZmxVxx7WvHtMhyg0mctKsGi6pGnEbghfabyguzaK5HR5ZavoysKZAPA7uk2HrRbKGrLpSFLCiKWzj_bRFURRs5CdxRcw7yv3JSjvmMB49kGLIidCTTT4Vuv67Dj1zXoqYucUZLB9_4PZMP38iFeZNjJvb-JSX2SfjL0kuNTIL46GQLhEmLpByXuEm3McVhseaUMLt6DPfbgVY4sGNwq-ff0VO3VOD6uJ5jEJV2ZNbjQpyr2L2KPkVJjofyt6kY0ZFAnCIsqyRSYZ5dNZh1O3FdBOt3B7CWWiCyQuOF6RL0_U_HkZyFfR_HU84l5lS5FJkj6XwrpO5089qRbmnhkiMseJnEWxiaOCUVfkyGkjDueXT_pIE8hn7IN5IQnn-TXy0';
+  }
+}
 
 export const echoConfig: EchoConfig = {
   userModel: 'App.Linkmex.User',
@@ -13,13 +18,7 @@ export const echoConfig: EchoConfig = {
     namespace: 'App.Linkmex',
     broadcaster: 'socket.io',
     host: window.location.hostname + ':8890',
-    authEndpoint: '/api/broadcasting/auth',
-    auth: {
-      headers: {
-        // tslint:disable-next-line: max-line-length
-        Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImM4MTUyYTE2MzZmNGZlOGZlMTM0OWZlZDJmNjRmMmE2N2Q4NWRkZTExOTk1ODdhMTJkMGM1YmRlYmIyNmFmZWFhMDViYTRhMzYwYTY4ZjVhIn0.eyJhdWQiOiI0IiwianRpIjoiYzgxNTJhMTYzNmY0ZmU4ZmUxMzQ5ZmVkMmY2NGYyYTY3ZDg1ZGRlMTE5OTU4N2ExMmQwYzViZGViYjI2YWZlYWEwNWJhNGEzNjBhNjhmNWEiLCJpYXQiOjE1NzE2ODA1MTgsIm5iZiI6MTU3MTY4MDUxOCwiZXhwIjoxNTcxNjg0MTE4LCJzdWIiOiIxIiwic2NvcGVzIjpbIioiXX0.nkUHLRFhFxkwqlJQ16dGNjaLf5kFG37en559lmnyR4GsFDhSLxVEXCCEHq6QGNz0LNUxlXo5HcqTUpuUgZR2taOj-MT4qXuGv43T4YSA3iQfngeUpWmrLuX-nhhq2fs1_J8ZY86RCVWICeerkYWMTL_1W01kmOrc5J7-OK1Bn1acmXgGvuNparmzNabPcqvM67Xrgz13jIAnYYrxrp6gGRgE9XzSxRJ7DlEqJOeJC5vM_zBI09MxBvHnVikPeqr7-d_IARhBnUsj3XDv-JxS1zRGpRb1E8HzknILGarMDwSEvT1UWNXohMxqBMyyPxpMkh-mq1YSJgtJZEUbMt8tZMIoVoR9zdX0ZHIbom_mfnvduzXnryosNDGpIkNErcA8c3lotXv59JeZmQDfYEYUyDM-CTKG-QJRpN2Fz3fA-R2stG0QTw3rSMqyRZ7vhYk6cAducCYS3ttLCDiQU37etC9UaoJrSRGssaLUmOLMxX4pmS_Ra2Cmj7QJPRkxrOtRnrjxDepKwSlvSQp9TNldit9gJrVjjCNW3Crs5tQ2JG7IPsmqWROUWYnI9K3fszhfy7WbLV1j8Xg6azZ1HZ-qGPE51OqdB7kATgUqSsvKn8bJxks8fbFP8JlvPikTAOg6vUjVwl1RAFvjLQTQkPDkNeVf6OhJVflhjxDfLZQqTQs'
-      }
-    },
+    authEndpoint: '/api/broadcasting/auth'
   }
 };
 
@@ -30,9 +29,11 @@ export const echoConfig: EchoConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgLaravelEchoModule.forRoot(echoConfig),
+    LaravelEchoModule.forRoot({
+      config: echoConfig
+    }),
   ],
-  providers: [],
+  providers: [{ provide: AUTH_SERVICE, useClass: AuthService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
